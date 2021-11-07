@@ -1,3 +1,4 @@
+import 'package:ecommerce/view/auth/signin_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'E-Commerce App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -30,15 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Amazon"),
-      ),
-      body: const Center(
-        child: Text(
-          'You have pushed the button this many times:',
-        ),
-      ),
-
+      body: LogInScreen(),
     );
   }
 }
