@@ -1,5 +1,6 @@
 import 'package:ecommerce/view/auth/signin_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: ShowCaseWidget(builder: Builder(builder: (_)=> LogInScreen())),
     );
   }
 }
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LogInScreen(),
+      body: Container(),
     );
   }
 }
