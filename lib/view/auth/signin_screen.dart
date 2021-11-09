@@ -1,8 +1,9 @@
 import 'package:ecommerce/view/app_widgets/custom_button.dart';
+import 'package:ecommerce/view/app_widgets/custom_social_button.dart';
 import 'package:ecommerce/view/app_widgets/custom_text.dart';
-import 'package:ecommerce/view/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class LogInScreen extends StatefulWidget {
 }
 
 class _LogInScreenState extends State<LogInScreen> {
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +25,7 @@ class _LogInScreenState extends State<LogInScreen> {
       body: Container(
         padding: const EdgeInsets.only(top: 50, left: 30, right: 30),
         color: Colors.white,
-        child: Column(
+        child: ListView(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -38,12 +41,13 @@ class _LogInScreenState extends State<LogInScreen> {
                     fontSize: 18,
                     color: const Color.fromRGBO(0, 197, 105, 1),
                   ),
-                  onTap: () => Navigator.pushReplacement(
+                  onTap: () => Get.toNamed("/signup")
+                  /*Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (_) => SignUpScreen(),
                     ),
-                  ),
+                  )*/,
                 ),
               ],
             ),
@@ -63,6 +67,7 @@ class _LogInScreenState extends State<LogInScreen> {
             ),
             TextField(
               style: const TextStyle(fontSize: 25),
+              controller: _email,
               decoration: InputDecoration(
                   label: CustomText(
                     text: "Email",
@@ -81,19 +86,21 @@ class _LogInScreenState extends State<LogInScreen> {
             ),
             TextField(
               obscureText: true,
+              controller: _password,
               style: const TextStyle(fontSize: 25),
               decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 15),
-                  label: CustomText(
-                    text: "Password",
-                    fontSize: 14,
+                contentPadding: const EdgeInsets.symmetric(vertical: 15),
+                label: CustomText(
+                  text: "Password",
+                  fontSize: 14,
+                ),
+                hintText: "",
+                enabledBorder: const UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Color.fromRGBO(0, 197, 105, 1),
                   ),
-                  hintText: "",
-                  enabledBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Color.fromRGBO(0, 197, 105, 1),
-                    ),
-                  )),
+                ),
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -118,23 +125,11 @@ class _LogInScreenState extends State<LogInScreen> {
             const SizedBox(
               height: 20,
             ),
-            CustomButton(
-              text: "Sign In with Facebook",
-              fontSize: 14,
-              background: Colors.white,
-              color: Colors.black,
-              icon: FontAwesomeIcons.facebook,
-            ),
+            CustomSocialButton(imagePath: "assets/images/facebook.png", text: "Sign In with Facebook"),
             const SizedBox(
               height: 20,
             ),
-            CustomButton(
-              text: "Sign In with Google",
-              fontSize: 14,
-              background: Colors.white,
-              color: Colors.black,
-              icon: FontAwesomeIcons.google,
-            ),
+            CustomSocialButton(imagePath: "assets/images/google.png", text: "Sign In with Google"),
           ],
         ),
       ),

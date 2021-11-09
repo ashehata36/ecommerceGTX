@@ -7,15 +7,14 @@ class CustomButton extends StatelessWidget {
   Color background;
   double fontSize;
   FontWeight fontWeight;
-  IconData? icon;
 
-  CustomButton(
-      {required this.text,
-      this.color = Colors.white,
-      this.background = const Color.fromRGBO(0, 197, 105, 1),
-      this.fontSize = 18,
-      this.fontWeight = FontWeight.normal,
-      this.icon});
+  CustomButton({
+    required this.text,
+    this.color = Colors.white,
+    this.background = const Color.fromRGBO(0, 197, 105, 1),
+    this.fontSize = 18,
+    this.fontWeight = FontWeight.normal,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,25 +31,13 @@ class CustomButton extends StatelessWidget {
           ),
           color: background,
         ),
-        child:icon == null?Text(
+        child: Text(
           text,
           style: TextStyle(
             color: color,
             fontSize: fontSize,
             fontWeight: fontWeight,
           ),
-        ):Row(
-          children: [
-            Icon(icon),
-            Text(
-                text,
-                style: TextStyle(
-                  color: color,
-                  fontSize: fontSize,
-                  fontWeight: fontWeight,
-                ),
-              ),
-          ],
         ),
       ),
     );
