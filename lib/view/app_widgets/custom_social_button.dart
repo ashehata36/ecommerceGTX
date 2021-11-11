@@ -4,12 +4,13 @@ import 'custom_text.dart';
 class CustomSocialButton extends StatelessWidget {
   final String imagePath;
   final String text;
-  CustomSocialButton({required this.imagePath,required this.text});
+  final VoidCallback function;
+  CustomSocialButton({required this.imagePath,required this.text,required this.function});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed:function,
       child: ListTile(
         title: CustomText(
           text: text,

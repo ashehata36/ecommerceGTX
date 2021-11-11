@@ -1,10 +1,13 @@
+import 'package:ecommerce/Helpers/binding.dart';
 import 'package:ecommerce/view/auth/signin_screen.dart';
 import 'package:ecommerce/view/auth/signup_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:showcaseview/showcaseview.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -14,13 +17,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      initialBinding: Binding(),
       title: 'E-Commerce App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ShowCaseWidget(
-        builder: Builder(builder: (_) => const LogInScreen()),
+      home: Scaffold(
+        body: LogInScreen(),
       ),
       routes: {
         '/signup': (_)=>SignUpScreen()

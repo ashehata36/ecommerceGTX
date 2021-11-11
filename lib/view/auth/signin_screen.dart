@@ -1,20 +1,16 @@
+import 'package:ecommerce/core/view_model/auth_viewmodel.dart';
 import 'package:ecommerce/view/app_widgets/custom_button.dart';
 import 'package:ecommerce/view/app_widgets/custom_social_button.dart';
 import 'package:ecommerce/view/app_widgets/custom_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
-class LogInScreen extends StatefulWidget {
-  const LogInScreen({Key? key}) : super(key: key);
-
-  @override
-  _LogInScreenState createState() => _LogInScreenState();
-}
-
-class _LogInScreenState extends State<LogInScreen> {
+class LogInScreen extends  GetWidget<AuthViewModel>{
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,11 +121,11 @@ class _LogInScreenState extends State<LogInScreen> {
             const SizedBox(
               height: 20,
             ),
-            CustomSocialButton(imagePath: "assets/images/facebook.png", text: "Sign In with Facebook"),
+            CustomSocialButton(imagePath: "assets/images/facebook.png", text: "Sign In with Facebook",function: (){},),
             const SizedBox(
               height: 20,
             ),
-            CustomSocialButton(imagePath: "assets/images/google.png", text: "Sign In with Google"),
+            CustomSocialButton(imagePath: "assets/images/google.png", text: "Sign In with Google",function:()=> controller.signInWithGoogle(),),
           ],
         ),
       ),
