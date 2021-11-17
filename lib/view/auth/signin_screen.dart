@@ -2,12 +2,11 @@ import 'package:ecommerce/core/view_model/auth_viewmodel.dart';
 import 'package:ecommerce/view/app_widgets/custom_button.dart';
 import 'package:ecommerce/view/app_widgets/custom_social_button.dart';
 import 'package:ecommerce/view/app_widgets/custom_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 
-class LogInScreen extends  GetWidget<AuthViewModel>{
+class LogInScreen extends GetWidget<AuthViewModel> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
 
@@ -37,13 +36,45 @@ class LogInScreen extends  GetWidget<AuthViewModel>{
                     fontSize: 18,
                     color: const Color.fromRGBO(0, 197, 105, 1),
                   ),
-                  onTap: () => Get.toNamed("/signup")
+                  onTap: () {
+                    //Get.toNamed("/signup");
+                    /*Get.showSnackbar(GetBar(
+                      title: "AAAA",
+                      borderRadius: 20,
+                      message: "SSSSSSSSS",
+                      isDismissible: true,
+                      duration: const Duration(seconds: 3),
+                      overlayBlur: 5,
+                      snackPosition: SnackPosition.BOTTOM,
+                      margin: const EdgeInsets.all(10),
+                      animationDuration: const Duration(seconds: 1),
+                    ));*/
+                    /*Get.bottomSheet(
+                      Column(
+                        children: const [
+                          ListTile(title: Text("AAAAAA"),leading: Icon(Icons.add),)
+                        ],
+                      ),
+                      backgroundColor: Colors.redAccent,
+                      elevation: 10,
+                      enterBottomSheetDuration: const Duration(seconds: 2),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20)),
+                        side: BorderSide(
+                          color: Color.fromRGBO(112, 112, 112, 1),
+                        ),
+                      ),
+                      barrierColor: Colors.black54
+                    );*/
+                    //Get.showOverlay(asyncFunction: ())
+                  }
                   /*Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (_) => SignUpScreen(),
                     ),
-                  )*/,
+                  )*/
+                  ,
                 ),
               ],
             ),
@@ -121,11 +152,19 @@ class LogInScreen extends  GetWidget<AuthViewModel>{
             const SizedBox(
               height: 20,
             ),
-            CustomSocialButton(imagePath: "assets/images/facebook.png", text: "Sign In with Facebook",function: (){},),
+            CustomSocialButton(
+              imagePath: "assets/images/facebook.png",
+              text: "Sign In with Facebook",
+              function: () {},
+            ),
             const SizedBox(
               height: 20,
             ),
-            CustomSocialButton(imagePath: "assets/images/google.png", text: "Sign In with Google",function:()=> controller.signInWithGoogle(),),
+            CustomSocialButton(
+              imagePath: "assets/images/google.png",
+              text: "Sign In with Google",
+              function: () => controller.signInWithGoogle(),
+            ),
           ],
         ),
       ),
